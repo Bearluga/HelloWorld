@@ -8,22 +8,34 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
-
+@interface ViewController()
+@property (nonatomic) BOOL userIsInTheMiddleOfEnteringANumber;
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-}
+@synthesize display = _display;
+@syn
 
-- (void)didReceiveMemoryWarning
+
+- (IBAction)digitPressed:(UIButton *)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSString *digit = [sender currentTitle];
+  if(self.userIsInTheMiddleOfEnteringANumber){
+    self.display.text = [self.display.text stringByAppendingString:digit];
+    
+  }else{
+    self.display.text = digit;
+    self.userIsInTheMiddleOfEnteringANumber = YES;
+  }
+  
+//    NSLog(@"digit pressed = %@", digit);
+}
+- (IBAction)operationPressed:(id)sender {
+  
+  
+}
+- (IBAction)enterPressed {
 }
 
 @end
